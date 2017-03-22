@@ -28,6 +28,12 @@ class FrameOpenFL extends GifFrame<FrameOpenFL>
     return frame;
   }
   
+  // Clean
+  public override function clean()
+  {
+    bitmapData.dispose();
+  }
+  
   // Set pixel value
   public override function setPixel( x:Int, y:Int, color:Int )
   {

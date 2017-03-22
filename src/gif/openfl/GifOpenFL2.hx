@@ -28,13 +28,27 @@ class GifOpenFL2 extends GifDisplay2<FrameOpenFL>
     super( data );
   }
   
+  // Clean
+  public override function clean()
+  {
+    super.clean();
+    
+    while ( display.numChildren > 0 )
+    {
+      display.removeChildAt( 0 );
+    }
+    
+    bmps = null;
+    display = null;
+  }
+  
   // Display this frame
   public override function setFrame( frame, visible = true )
   {
     var bmp:Bitmap = null;
     if ( bmps[frame.pos] == null )
     {
-      bmp = new Bitmap( frame.bitmapData );
+      bmp = new Bitmap( frame.bitmapData, null, true );
       bmp.x = frame.x;
       bmp.y = frame.y;
       

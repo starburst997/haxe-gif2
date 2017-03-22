@@ -18,6 +18,10 @@ class GifDisplay<T:GifFrame<T>>
   public var frames:Array<T> = [];
   private var infos:Array<GifFrameInfo>;
   
+  // Dimension
+  public var width:Int;
+  public var height:Int;
+  
   // Timer
   public var playing:Bool = false;
   var timer:Timer = null;
@@ -29,6 +33,20 @@ class GifDisplay<T:GifFrame<T>>
     infos = GifDecoder.decode(data).frameList;
     
     play(); // Play by default
+  }
+  
+  // Clean
+  public function clean()
+  {
+    stop();
+    
+    for ( frame in frames )
+    {
+      frame.clean();
+    }
+    
+    frames = null;
+    infos = null;
   }
   
   // Display this frame
@@ -71,6 +89,9 @@ class GifDisplay<T:GifFrame<T>>
     else
     {
       frame = createGifFrame( info.imageWidth, info.imageHeight );
+      
+      width = info.imageWidth;
+      height = info.imageHeight;
     }
     
     frame.pos = pos;

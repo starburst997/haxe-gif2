@@ -30,6 +30,12 @@ class GifFrame<T>
     // Override me ;)
   }
   
+  // Clean
+  public function clean()
+  {
+    // Override me ;)
+  }
+  
   // Clone
   public function clone():T
   {
