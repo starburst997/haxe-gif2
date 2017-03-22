@@ -2,6 +2,8 @@ package;
 
 import file.load.FileLoad;
 
+import gif.AnimatedGif;
+
 import statistics.TraceTimer;
 import statistics.Stats;
 
@@ -17,13 +19,21 @@ class TestGif
   // Stats
   var stats = new Stats();
 
+  // Handler
+  var handler:AnimatedGif->Void = null;
+  
+  // Gif Decoder
+  var gif:AnimatedGif = null;
+  
   // Run some tests
-  public function new()
+  public function new( handler:AnimatedGif->Void )
   {
     trace("Test Gif Launch!");
 
     TraceTimer.activate();
 
+    this.handler = handler;
+    
     loadURL( TEST1 );
   }
 
@@ -39,7 +49,11 @@ class TestGif
         if ( data != null )
         {
           trace("GIF Bytes loaded!");
-
+          
+          gif = new AnimatedGif( data );
+          gif.play();
+          
+          if ( handler != null ) handler( gif );
         }
       },
       progress: function(percent)

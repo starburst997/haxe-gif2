@@ -14,6 +14,12 @@ class MainOpenFL extends Sprite
   {
 		super();
 
-		test = new TestGif();
+		test = new TestGif( function( gif )
+    {
+      trace("Gif!");
+      
+      // Get OpenFL Sprite
+      addChild( gif );
+    });
 	}
 }
