@@ -6,6 +6,9 @@ package gif;
 @:generic
 class GifFrame<T>
 {
+  // Index
+  public var pos:Int = 0;
+  
   // Dimensions
   public var width:Int = 0;
   public var height:Int = 0;

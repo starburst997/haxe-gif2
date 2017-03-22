@@ -7,19 +7,23 @@ import gif.GifDisplay;
 import gif.openfl.FrameOpenFL;
 
 import openfl.display.Bitmap;
+import openfl.display.Sprite;
 
 /**
  * An OpenFL Gif
  */
-class GifOpenFL extends GifDisplay<FrameOpenFL>
+class GifOpenFL2 extends GifDisplay2<FrameOpenFL>
 {
   // Display
-  public var display:Bitmap;
+  public var display:Sprite;
+  
+  // Frames
+  public var bmps:Array<Bitmap> = [];
   
   // Constructor
   public function new( data:Bytes ) 
   {
-    display = new Bitmap();
+    display = new Sprite();
     
     super( data );
   }
@@ -27,10 +31,23 @@ class GifOpenFL extends GifDisplay<FrameOpenFL>
   // Display this frame
   public override function setFrame( frame, visible = true )
   {
-    display.bitmapData = frame.bitmapData;
+    var bmp:Bitmap = null;
+    if ( bmps[frame.pos] == null )
+    {
+      bmp = new Bitmap( frame.bitmapData );
+      bmp.x = frame.x;
+      bmp.y = frame.y;
+      
+      display.addChild( bmp );
+      
+      bmps[frame.pos] = bmp;
+    }
+    else
+    {
+      bmp = bmps[frame.pos];
+    }
     
-    display.x = frame.x;
-    display.y = frame.y;
+    bmp.visible = visible;
   }
   
   // Create a GifFrame object

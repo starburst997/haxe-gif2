@@ -9,10 +9,10 @@ import gif.images.GifFrameInfo;
 /**
  * An array of Gif Frame to display
  * 
- * Not really optimized, each frame are a single bitmapData (not one over the other)
+ * This one is more closely to the original with bitmap one on top of the others
  */
 @:generic
-class GifDisplay<T:GifFrame<T>>
+class GifDisplay2<T:GifFrame<T>>
 {
   // Frames
   public var frames:Array<T> = [];
@@ -58,20 +58,7 @@ class GifDisplay<T:GifFrame<T>>
     var offsetX = 0;
     var offsetY = 0;
     
-    if ( /*(info.disposalMethod == 1) &&*/ (pos > 0) )
-    {
-      var p = pos;
-      while ( (p-- > 0) && (infos[p].disposalMethod != 1) ) {};
-      
-      frame = frames[p].clone();
-      
-      offsetX = info.imageLeftPosition;
-      offsetY = info.imageTopPosition;
-    }
-    else
-    {
-      frame = createGifFrame( info.imageWidth, info.imageHeight );
-    }
+    frame = createGifFrame( info.imageWidth, info.imageHeight );
     
     frame.pos = pos;
     frames[pos] = frame;
@@ -114,11 +101,8 @@ class GifDisplay<T:GifFrame<T>>
       }
     }
     
-    if ( (info.disposalMethod != 1) || (pos == 0) )
-    {
-      //frame.x = info.imageLeftPosition;
-      //frame.y = info.imageTopPosition;
-    }
+    frame.x = info.imageLeftPosition;
+    frame.y = info.imageTopPosition;
     
     info.clearBinaryData();
   }
@@ -128,7 +112,20 @@ class GifDisplay<T:GifFrame<T>>
   {
     if ( timer != null ) timer.stop();
     
+    if ( pos >= 0 )
+    {
+      setFrame( frames[pos], infos[pos].disposalMethod == 1 );
+    }
+    
     pos = (pos+1) % infos.length;
+    
+    if ( pos == 0 )
+    {
+      for ( frame in frames )
+      {
+        if ( frame.pos != 0 ) setFrame( frame, false );
+      }
+    }
     
     if ( frames[pos] == null ) createFrame( pos );
     setFrame( frames[pos] );
