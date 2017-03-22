@@ -1,8 +1,8 @@
 package;
 
-import file.load.FileLoad;
+import haxe.io.Bytes;
 
-import gif.AnimatedGif;
+import file.load.FileLoad;
 
 import statistics.TraceTimer;
 import statistics.Stats;
@@ -10,23 +10,21 @@ import statistics.Stats;
 /**
  * Class used to Test / Compile haxe-gif2 library
  */
-class TestGif
+@:generic
+class TestGif<T:haxe.Constraints.Constructible<Bytes->Void>>
 {
   // List of files
-  public static inline var PATH:String = "./assets/";
-  public static inline var TEST1:String = PATH + "test.gif";
+  public var PATH:String = "./assets/";
+  public var TEST1:String = "test.gif";
 
   // Stats
   var stats = new Stats();
 
   // Handler
-  var handler:AnimatedGif->Void = null;
-  
-  // Gif Decoder
-  var gif:AnimatedGif = null;
+  var handler:T->Void = null;
   
   // Run some tests
-  public function new( handler:AnimatedGif->Void )
+  public function new( handler:T->Void )
   {
     trace("Test Gif Launch!");
 
@@ -34,7 +32,7 @@ class TestGif
 
     this.handler = handler;
     
-    loadURL( TEST1 );
+    loadURL( PATH + TEST1 );
   }
 
   // Load a GIF Bytes and decode it
@@ -50,8 +48,7 @@ class TestGif
         {
           trace("GIF Bytes loaded!");
           
-          gif = new AnimatedGif( data );
-          gif.play();
+          var gif = new T( data );
           
           if ( handler != null ) handler( gif );
         }

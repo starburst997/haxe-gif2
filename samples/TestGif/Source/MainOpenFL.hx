@@ -2,24 +2,26 @@ package;
 
 import openfl.display.Sprite;
 
+import gif.openfl.GifOpenFL;
+
 /**
  * Test the gif2 library in OpenFL
  */
 class MainOpenFL extends Sprite
 {
-  var test:TestGif;
+  var test:TestGif<GifOpenFL>;
 
   // Run some tests
 	public function new()
   {
 		super();
 
-		test = new TestGif( function( gif )
+		var test = new TestGif<GifOpenFL>( function( gif )
     {
       trace("Gif!");
       
       // Get OpenFL Sprite
-      addChild( gif );
+      addChild( gif.display );
     });
 	}
 }
