@@ -1,0 +1,12 @@
+{
+  "name" : "gif2",
+  "url" : "https://github.com/starburst997/haxe-gif2",
+  "license" : "MIT",
+  "tags": ["animated", "gif", "openfl"],
+  "description" : "Fork of haxe-gif, display animated GIF",
+  "version" : "0.0.1",
+  "classPath": "src/",
+  "releasenote" : "",
+  "contributors" : ["starburst997"],
+  "dependencies" : {}
+}

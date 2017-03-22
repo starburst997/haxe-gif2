@@ -1,0 +1,7 @@
+-lib file-load
+-lib statistics
+-lib trace-timer
+-lib gif2
+-cp Source
+-js Server/js/TestGif.js
+-main Main

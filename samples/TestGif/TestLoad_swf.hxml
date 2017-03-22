@@ -1,0 +1,9 @@
+-lib file-load
+-lib statistics
+-lib trace-timer
+-lib gif2
+-cp Source
+-swf Server/TestGif.swf
+-swf-header 800:600:60:FFFFFF
+-swf-version 15.0
+-main Main
