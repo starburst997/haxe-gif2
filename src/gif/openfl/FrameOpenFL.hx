@@ -1,5 +1,7 @@
 package gif.openfl;
 
+import gif.color.Rgba;
+
 import openfl.display.BitmapData;
 
 /**
@@ -35,7 +37,7 @@ class FrameOpenFL extends GifFrame<FrameOpenFL>
   }
   
   // Set pixel value
-  public override function setPixel( x:Int, y:Int, color:Int )
+  public override function setPixel( x:Int, y:Int, color:Rgba )
   {
     bitmapData.setPixel32( x, y, color );
   }

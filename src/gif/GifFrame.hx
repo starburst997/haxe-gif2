@@ -1,5 +1,7 @@
 package gif;
 
+import gif.color.Rgba;
+
 /**
  * Gif Frame
  */
@@ -25,7 +27,7 @@ class GifFrame<T>
   }
   
   // Set pixel value
-  public function setPixel( x:Int, y:Int, color:Int )
+  public function setPixel( x:Int, y:Int, color:Rgba )
   {
     // Override me ;)
   }

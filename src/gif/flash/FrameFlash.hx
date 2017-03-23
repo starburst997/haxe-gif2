@@ -1,5 +1,7 @@
 package gif.flash;
 
+import gif.color.Rgba;
+
 import flash.display.BitmapData;
 
 /**
@@ -35,7 +37,7 @@ class FrameFlash extends GifFrame<FrameFlash>
   }
   
   // Set pixel value
-  public override function setPixel( x:Int, y:Int, color:Int )
+  public override function setPixel( x:Int, y:Int, color:Rgba )
   {
     bitmapData.setPixel32( x, y, color );
   }
