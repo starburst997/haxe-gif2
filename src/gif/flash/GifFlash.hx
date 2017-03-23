@@ -28,6 +28,8 @@ class GifFlash extends GifDisplay<FrameFlash>
   // Display this frame
   public override function setFrame( frame, visible = true )
   {
+    frame.bitmapData.unlock();
+    
     display.bitmapData = frame.bitmapData;
     
     display.x = frame.x;

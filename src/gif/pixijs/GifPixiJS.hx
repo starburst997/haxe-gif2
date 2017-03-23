@@ -1,11 +1,11 @@
 package gif.pixijs;
 
 import haxe.io.Bytes;
-import pixi.core.textures.Texture;
 
 import gif.GifDisplay;
 import gif.pixijs.FramePixiJS;
 
+import pixi.core.textures.Texture;
 import pixi.core.sprites.Sprite;
 
 /**

@@ -50,6 +50,8 @@ class GifOpenFL2 extends GifDisplay2<FrameOpenFL>
     if ( bmps[frame.pos] == null )
     {
       bmp = new Bitmap( frame.bitmapData, PixelSnapping.AUTO, true );
+      frame.bitmapData.unlock();
+      
       bmp.x = frame.x;
       bmp.y = frame.y;
       

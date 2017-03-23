@@ -18,6 +18,7 @@ class FrameOpenFL extends GifFrame<FrameOpenFL>
     super( width, height );
     
     this.bitmapData = (bitmapData == null) ? (new BitmapData( width, height, true, 0x00000000 )) : bitmapData;
+    this.bitmapData.lock();
   }
   
   // Create a GifFrame object

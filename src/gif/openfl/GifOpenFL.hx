@@ -28,6 +28,7 @@ class GifOpenFL extends GifDisplay<FrameOpenFL>
   public override function setFrame( frame, visible = true )
   {
     display.bitmapData = frame.bitmapData;
+    frame.bitmapData.unlock();
     
     display.x = frame.x;
     display.y = frame.y;

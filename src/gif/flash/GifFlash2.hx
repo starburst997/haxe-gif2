@@ -49,6 +49,8 @@ class GifFlash2 extends GifDisplay2<FrameFlash>
     var bmp:Bitmap = null;
     if ( bmps[frame.pos] == null )
     {
+      frame.bitmapData.unlock();
+      
       bmp = new Bitmap( frame.bitmapData, PixelSnapping.AUTO, true );
       bmp.x = frame.x;
       bmp.y = frame.y;
