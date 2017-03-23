@@ -6,7 +6,6 @@ import gif.GifDisplay;
 
 import gif.openfl.FrameOpenFL;
 
-import openfl.display.PixelSnapping;
 import openfl.display.Bitmap;
 import openfl.display.Sprite;
 
@@ -49,7 +48,7 @@ class GifOpenFL2 extends GifDisplay2<FrameOpenFL>
     var bmp:Bitmap = null;
     if ( bmps[frame.pos] == null )
     {
-      bmp = new Bitmap( frame.bitmapData, PixelSnapping.AUTO, true );
+      bmp = new Bitmap( frame.bitmapData, null, true );
       bmp.x = frame.x;
       bmp.y = frame.y;
       

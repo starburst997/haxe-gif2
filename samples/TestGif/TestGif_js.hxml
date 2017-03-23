@@ -1,7 +1,8 @@
 -lib file-load
 -lib statistics
 -lib trace-timer
+-lib pixijs
 -lib gif2
 -cp Source
 -js Server/js/TestGif.js
--main Main
+-main MainPixiJS

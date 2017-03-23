@@ -22,7 +22,7 @@
     <option directives="" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
-    <option mainClass="Main" />
+    <option mainClass="MainPixiJS" />
     <option enabledebug="False" />
     <option additional="" />
   </build>
@@ -32,6 +32,7 @@
     <library name="statistics" />
     <library name="trace-timer" />
     <library name="gif2" />
+    <library name="pixijs" />
   </haxelib>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>

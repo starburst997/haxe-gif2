@@ -1,19 +1,19 @@
-package gif.openfl;
+package gif.flash;
 
 import haxe.io.Bytes;
 
 import gif.GifDisplay;
 
-import gif.openfl.FrameOpenFL;
+import gif.flash.FrameFlash;
 
-import openfl.display.PixelSnapping;
-import openfl.display.Bitmap;
-import openfl.display.Sprite;
+import flash.display.PixelSnapping;
+import flash.display.Bitmap;
+import flash.display.Sprite;
 
 /**
- * An OpenFL Gif
+ * A Flash Gif
  */
-class GifOpenFL2 extends GifDisplay2<FrameOpenFL>
+class GifFlash2 extends GifDisplay2<FrameFlash>
 {
   // Display
   public var display:Sprite;
@@ -68,6 +68,6 @@ class GifOpenFL2 extends GifDisplay2<FrameOpenFL>
   // Create a GifFrame object
   public override function createGifFrame( width:Int, height:Int )
   {
-    return new FrameOpenFL( width, height );
+    return new FrameFlash( width, height );
   }
 }
