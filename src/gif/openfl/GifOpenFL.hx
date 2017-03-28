@@ -1,6 +1,7 @@
 package gif.openfl;
 
 import haxe.io.Bytes;
+import openfl.display.PixelSnapping;
 
 import gif.GifDisplay;
 
@@ -19,7 +20,7 @@ class GifOpenFL extends GifDisplay<FrameOpenFL>
   // Constructor
   public function new( data:Bytes ) 
   {
-    display = new Bitmap();
+    display = new Bitmap(null, PixelSnapping.AUTO, true);
     
     super( data );
   }
@@ -28,9 +29,10 @@ class GifOpenFL extends GifDisplay<FrameOpenFL>
   public override function setFrame( frame, visible = true )
   {
     display.bitmapData = frame.bitmapData;
+    display.smoothing = true;
     
-    display.x = frame.x;
-    display.y = frame.y;
+    //display.x = frame.x;
+    //display.y = frame.y;
   }
   
   // Create a GifFrame object
