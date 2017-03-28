@@ -1,13 +1,13 @@
-package gif.openfl;
+package gif.flash;
 
 import gif.color.Rgba;
 
-import openfl.display.BitmapData;
+import flash.display.BitmapData;
 
 /**
- * OpenFL Gif Frame
+ * Flash Gif Frame
  */
-class FrameOpenFL extends GifFrame<FrameOpenFL>
+class FrameFlash extends GifFrame<FrameFlash>
 {
   // BitmapData
   public var bitmapData:BitmapData = null;
@@ -24,7 +24,7 @@ class FrameOpenFL extends GifFrame<FrameOpenFL>
   // Create a GifFrame object
   public override function clone()
   {
-    var frame = new FrameOpenFL( width, height, bitmapData.clone() );
+    var frame = new FrameFlash( width, height, bitmapData.clone() );
     frame.x = x;
     frame.y = y;
     

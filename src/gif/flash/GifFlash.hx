@@ -1,18 +1,18 @@
-package gif.openfl;
+package gif.flash;
 
+import flash.display.PixelSnapping;
 import haxe.io.Bytes;
-import openfl.display.PixelSnapping;
 
 import gif.GifDisplay;
 
-import gif.openfl.FrameOpenFL;
+import gif.flash.FrameFlash;
 
-import openfl.display.Bitmap;
+import flash.display.Bitmap;
 
 /**
- * An OpenFL Gif
+ * A Flash Gif
  */
-class GifOpenFL extends GifDisplay<FrameOpenFL>
+class GifFlash extends GifDisplay<FrameFlash>
 {
   // Display
   public var display:Bitmap;
@@ -20,7 +20,7 @@ class GifOpenFL extends GifDisplay<FrameOpenFL>
   // Constructor
   public function new( data:Bytes ) 
   {
-    display = new Bitmap(null, PixelSnapping.AUTO, true);
+    display = new Bitmap( null, PixelSnapping.AUTO, true );
     
     super( data );
   }
@@ -28,18 +28,17 @@ class GifOpenFL extends GifDisplay<FrameOpenFL>
   // Display this frame
   public override function setFrame( frame, visible = true )
   {
-    display.bitmapData = frame.bitmapData;
-    display.smoothing = true;
-    
     frame.bitmapData.unlock();
     
-    //display.x = frame.x;
-    //display.y = frame.y;
+    display.bitmapData = frame.bitmapData;
+    
+    display.x = frame.x;
+    display.y = frame.y;
   }
   
   // Create a GifFrame object
   public override function createGifFrame( width:Int, height:Int )
   {
-    return new FrameOpenFL( width, height );
+    return new FrameFlash( width, height );
   }
 }

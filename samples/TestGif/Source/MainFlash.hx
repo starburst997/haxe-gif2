@@ -1,5 +1,10 @@
 package;
 
+import gif.flash.GifFlash;
+import gif.flash.GifFlash2;
+
+import flash.Lib;
+
 /**
  * Class used to Test / Compile haxe-gif2 library
  *
@@ -7,17 +12,22 @@ package;
  * Simply issue "live-server" inside the html5 folder and build (release for faster build)
  * Server will reload page automatically when JS is compiled
  */
-class Main
+class MainFlash
 {
-  var test:TestGif;
-
   public function new()
   {
-    test = new TestGif();
+    //var test = new TestGif<GifFlash>( function( gif )
+		var test = new TestGif<GifFlash2>( function( gif )
+    {
+      trace("Gif!");
+      
+      // Get OpenFL Sprite
+      Lib.current.stage.addChild( gif.display );
+    });
   }
 
   static function main()
   {
-    new Main();
+    new MainFlash();
   }
 }
